@@ -12,38 +12,38 @@ class VendingMachine {
     // お釣り
     private $charge = 0;
 
-    public function buy(int $i, int $kindOfDrink) {
+    public function buy(int $payment, int $kindOfDrink) {
         // 100円と500円だけ受け付ける
-        if (($i != 100) && ($i != 500)) {
-            $this->charge += $i;
+        if (($payment != 100) && ($payment != 500)) {
+            $this->charge += $payment;
             return null;
         }
 
         if (($kindOfDrink == Drink::COKE) && ($this->quantityOfCoke == 0)) {
-            $this->charge += $i;
+            $this->charge += $payment;
             return null;
         } else if (($kindOfDrink == Drink::DIET_COKE) && ($this->quantityOfDietCoke == 0)) {
-            $this->charge += $i;
+            $this->charge += $payment;
             return null;
         } else if (($kindOfDrink == Drink::TEA) && ($this->quantityOfTea == 0)) {
-            $this->charge += $i;
+            $this->charge += $payment;
             return null;
         }
 
         // 釣り銭不足
-        if ($i == 500 && $this->numberOf100Yen < 4) {
-            $this->charge += $i;
+        if ($payment == 500 && $this->numberOf100Yen < 4) {
+            $this->charge += $payment;
             return null;
         }
 
-        if ($i == 100) {
+        if ($payment == 100) {
             // 100円玉を釣り銭に使える
             $this->numberOf100Yen ++;
-        } else if ($i == 500) {
+        } else if ($payment == 500) {
             // 400円のお釣り
-            $this->charge += ($i - 100);
+            $this->charge += ($payment - 100);
             // 100円玉を釣り銭に使える
-            $this->numberOf100Yen  -= ($i - 100) / 100;
+            $this->numberOf100Yen  -= ($payment - 100) / 100;
         }
 
         if ($kindOfDrink == Drink::COKE) {
