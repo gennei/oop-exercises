@@ -2,6 +2,7 @@
 
 require_once("./Drink.php");
 require_once("./VendingMachine.php");
+require_once("./Stock.php");
 
 class main {
 
