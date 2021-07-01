@@ -3,15 +3,12 @@
 class VendingMachine {
 
     // 在庫
-    /** @var Stock */
     private $stockOfCoke;
-    /** @var Stock */
     private $stockOfDietCoke;
-    /** @var Stock */
     private $stockOfTea;
 
     // 100円の在庫
-    private $numberOf100Yen = 10;
+    private $coins;
     // お釣り
     private $charge = 0;
 
@@ -19,50 +16,64 @@ class VendingMachine {
         $this->stockOfCoke     = new Stock(5);
         $this->stockOfDietCoke = new Stock(5);
         $this->stockOfTea      = new Stock(5);
+        $this->coins           = new CoinStack();
+        $this->coins->add(new Coin(100));
+        $this->coins->add(new Coin(100));
+        $this->coins->add(new Coin(100));
+        $this->coins->add(new Coin(100));
+        $this->coins->add(new Coin(100));
+        $this->coins->add(new Coin(100));
+        $this->coins->add(new Coin(100));
+        $this->coins->add(new Coin(100));
+        $this->coins->add(new Coin(100));
     }
 
-    public function buy(int $payment, int $kindOfDrink) {
+    public function buy(Coin $payment, DrinkType $kindOfDrink): ?Drink {
         // 100円と500円だけ受け付ける
-        if (($payment != 100) && ($payment != 500)) {
-            $this->charge += $payment;
+        if (($payment->get() != Coin::ONE_HUNDRED) && ($payment->get() != Coin::FIVE_HUNDRED)) {
+            $this->charge += $payment->get();
 
             return null;
         }
 
-        if (($kindOfDrink == Drink::COKE) && ($this->stockOfCoke->get() == 0)) {
-            $this->charge += $payment;
+        if (($kindOfDrink == DrinkType::COKE()) && ($this->stockOfCoke->get() == 0)) {
+            $this->charge += $payment->get();
 
             return null;
-        } elseif (($kindOfDrink == Drink::DIET_COKE) && ($this->stockOfDietCoke->get() == 0)) {
-            $this->charge += $payment;
+        } elseif (($kindOfDrink == DrinkType::DIET_COKE()) && ($this->stockOfDietCoke->get() == 0)) {
+            $this->charge += $payment->get();
 
             return null;
-        } elseif (($kindOfDrink == Drink::TEA) && ($this->stockOfTea->get() == 0)) {
-            $this->charge += $payment;
+        } elseif (($kindOfDrink == DrinkType::TEA()) && ($this->stockOfTea->get() == 0)) {
+            $this->charge += $payment->get();
 
             return null;
         }
 
         // 釣り銭不足
-        if ($payment == 500 && $this->numberOf100Yen < 4) {
-            $this->charge += $payment;
+        if ($payment->get() == 500 && $this->coins->count() < 4) {
+            $this->charge += $payment->get();
 
             return null;
         }
 
-        if ($payment == 100) {
+        if ($payment->get() == 100) {
             // 100円玉を釣り銭に使える
-            $this->numberOf100Yen++;
-        } elseif ($payment == 500) {
+            $this->coins->add(new Coin(100));
+        } elseif ($payment->get() == 500) {
             // 400円のお釣り
-            $this->charge += ($payment - 100);
-            // 100円玉を釣り銭に使える
-            $this->numberOf100Yen -= ($payment - 100) / 100;
+            $this->charge += ($payment->get() - 100);
+
+            // 雑だけど一旦これで
+            $this->coins->pop();
+            $this->coins->pop();
+            $this->coins->pop();
+            $this->coins->pop();
         }
 
-        if ($kindOfDrink == Drink::COKE) {
+        if ($kindOfDrink == DrinkType::COKE()) {
             $this->stockOfCoke->decrement();
-        } elseif ($kindOfDrink == Drink::DIET_COKE) {
+        } elseif ($kindOfDrink == DrinkType::DIET_COKE()) {
             $this->stockOfDietCoke->decrement();
         } else {
             $this->stockOfTea->decrement();
