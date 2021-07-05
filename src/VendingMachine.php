@@ -36,15 +36,15 @@ class VendingMachine {
             return null;
         }
 
-        if (($kindOfDrink == DrinkType::COKE()) && ($this->stockOfCoke->get() == 0)) {
+        if (($kindOfDrink == DrinkType::COKE()) && $this->stockOfCoke->isEmpty()) {
             $this->charge += $payment->get();
 
             return null;
-        } elseif (($kindOfDrink == DrinkType::DIET_COKE()) && ($this->stockOfDietCoke->get() == 0)) {
+        } elseif (($kindOfDrink == DrinkType::DIET_COKE()) && $this->stockOfDietCoke->isEmpty()) {
             $this->charge += $payment->get();
 
             return null;
-        } elseif (($kindOfDrink == DrinkType::TEA()) && ($this->stockOfTea->get() == 0)) {
+        } elseif (($kindOfDrink == DrinkType::TEA()) && $this->stockOfTea->isEmpty()) {
             $this->charge += $payment->get();
 
             return null;

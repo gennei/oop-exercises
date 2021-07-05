@@ -15,4 +15,8 @@ class Stock {
     public function decrement() {
         $this->quantity -= 1;
     }
+
+    public function isEmpty(): bool {
+        return $this->quantity === 0;
+    }
 }
