@@ -22,4 +22,13 @@ class CoinStack {
     public function doesNotHaveChange(): bool {
         return $this->count() < 4;
     }
+
+    public function takeOutChange(): array {
+        return [
+            new Coin(100),
+            new Coin(100),
+            new Coin(100),
+            new Coin(100),
+        ];
+    }
 }

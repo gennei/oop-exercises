@@ -3,6 +3,7 @@
 require_once("./Drink.php");
 require_once("./DrinkType.php");
 require_once("./Stock.php");
+require_once("./Charge.php");
 require_once("./Coin.php");
 require_once ("./CoinStack.php");
 require_once("./VendingMachine.php");
