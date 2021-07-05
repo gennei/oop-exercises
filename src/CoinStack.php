@@ -4,7 +4,8 @@ class CoinStack {
 
     private $coins;
 
-    public function __construct() {}
+    public function __construct() {
+    }
 
     public function add(Coin $coin) {
         $this->coins[] = $coin;
@@ -16,5 +17,9 @@ class CoinStack {
 
     public function pop() {
         array_pop($this->coins);
+    }
+
+    public function doesNotHaveChange(): bool {
+        return $this->count() < 4;
     }
 }

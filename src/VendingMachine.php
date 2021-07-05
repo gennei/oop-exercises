@@ -51,7 +51,7 @@ class VendingMachine {
         }
 
         // 釣り銭不足
-        if ($payment->get() == 500 && $this->coins->count() < 4) {
+        if ($payment->get() == 500 && $this->coins->doesNotHaveChange()) {
             $this->charge += $payment->get();
 
             return null;
