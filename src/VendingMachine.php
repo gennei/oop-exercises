@@ -3,21 +3,16 @@
 class VendingMachine {
 
     // 在庫
-    private $stockOfCoke;
-    private $stockOfDietCoke;
-    private $stockOfTea;
-
+    private $storage;
     // 100円の在庫
     private $coins;
     // お釣り
     private $charge;
 
     public function __construct() {
-        $this->stockOfCoke     = new Stock(5);
-        $this->stockOfDietCoke = new Stock(5);
-        $this->stockOfTea      = new Stock(5);
-        $this->coins           = new CoinStack();
-        $this->charge          = new Charge();
+        $this->storage = new Storage();
+        $this->coins   = new CoinStack();
+        $this->charge  = new Charge();
         $this->coins->add(new Coin(100));
         $this->coins->add(new Coin(100));
         $this->coins->add(new Coin(100));
@@ -37,18 +32,11 @@ class VendingMachine {
             return null;
         }
 
-        if (($kindOfDrink == DrinkType::COKE()) && $this->stockOfCoke->isEmpty()) {
+        if ($this->storage->isEmpty($kindOfDrink)) {
             $this->charge->add($payment);
 
             return null;
-        } elseif (($kindOfDrink == DrinkType::DIET_COKE()) && $this->stockOfDietCoke->isEmpty()) {
-            $this->charge->add($payment);
 
-            return null;
-        } elseif (($kindOfDrink == DrinkType::TEA()) && $this->stockOfTea->isEmpty()) {
-            $this->charge->add($payment);
-
-            return null;
         }
 
         // 釣り銭不足
@@ -72,13 +60,7 @@ class VendingMachine {
             $this->coins->pop();
         }
 
-        if ($kindOfDrink == DrinkType::COKE()) {
-            $this->stockOfCoke->decrement();
-        } elseif ($kindOfDrink == DrinkType::DIET_COKE()) {
-            $this->stockOfDietCoke->decrement();
-        } else {
-            $this->stockOfTea->decrement();
-        }
+        $this->storage->decrement($kindOfDrink);
 
         return new Drink($kindOfDrink);
     }

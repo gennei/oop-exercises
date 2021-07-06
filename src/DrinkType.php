@@ -23,9 +23,7 @@ trait EnumTrait {
         if (!self::isValidValue($key)) {
             throw new \InvalidArgumentException;
         }
-
-        $keys         = array_flip(self::ENUM);
-        $this->scalar = $keys[$key];
+        $this->scalar = $key;
     }
 
     final public static function isValidValue($key): bool {
@@ -46,5 +44,9 @@ trait EnumTrait {
 
     final public function __set($key, $value) {
         throw new \BadMethodCallException('All setter is forbbiden');
+    }
+
+    final public function valueOf(): string {
+        return (string)$this->scalar;
     }
 }

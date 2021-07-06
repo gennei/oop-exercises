@@ -2,6 +2,7 @@
 
 require_once("./Drink.php");
 require_once("./DrinkType.php");
+require_once("./Storage.php");
 require_once("./Stock.php");
 require_once("./Charge.php");
 require_once("./Coin.php");
