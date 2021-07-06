@@ -13,14 +13,14 @@ class Drink {
     }
 
     public function isCoke(): bool {
-        return $this->kind === DrinkType::COKE();
+        return $this->kind == DrinkType::COKE();
     }
 
     public function isDietCoke(): bool {
-        return $this->kind === DrinkType::DIET_COKE();
+        return $this->kind == DrinkType::DIET_COKE();
     }
 
     public function isTea(): bool {
-        return $this->kind === DrinkType::TEA();
+        return $this->kind == DrinkType::TEA();
     }
 }
