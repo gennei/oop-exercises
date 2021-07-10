@@ -13,15 +13,10 @@ class VendingMachine {
         $this->storage = new Storage();
         $this->coins   = new CoinStack();
         $this->charge  = new Charge();
-        $this->coins->add(new Coin(100));
-        $this->coins->add(new Coin(100));
-        $this->coins->add(new Coin(100));
-        $this->coins->add(new Coin(100));
-        $this->coins->add(new Coin(100));
-        $this->coins->add(new Coin(100));
-        $this->coins->add(new Coin(100));
-        $this->coins->add(new Coin(100));
-        $this->coins->add(new Coin(100));
+
+        foreach (range(0,10) as $value) {
+            $this->coins->add(new Coin(100));
+        }
     }
 
     public function buy(Coin $payment, DrinkType $kindOfDrink): ?Drink {
