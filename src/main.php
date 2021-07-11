@@ -4,9 +4,9 @@ require_once("./Drink.php");
 require_once("./DrinkType.php");
 require_once("./Storage.php");
 require_once("./Stock.php");
-require_once("./Charge.php");
+require_once("./Change.php");
+require_once ("./StockOf100Yen.php");
 require_once("./Coin.php");
-require_once ("./CoinStack.php");
 require_once("./VendingMachine.php");
 
 class main {
