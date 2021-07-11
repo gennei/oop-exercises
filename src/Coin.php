@@ -2,7 +2,7 @@
 
 class Coin {
 
-    const ONE_HUNDRED = 100;
+    const ONE_HUNDRED  = 100;
     const FIVE_HUNDRED = 500;
 
     private $amount;
@@ -11,7 +11,11 @@ class Coin {
         $this->amount = $amount;
     }
 
-    public function get() {
+    public function get(): int {
         return $this->amount;
+    }
+
+    public function toMoney(): Money {
+        return new Money($this->amount);
     }
 }

@@ -9,10 +9,6 @@ class Change {
         $this->coins[] = $coin;
     }
 
-    public function addChange(Change $change) {
-        $this->coins = $change->coins;
-    }
-
     public function getAmount(): int {
         $sum = 0;
         foreach ($this->coins as $coin) {
