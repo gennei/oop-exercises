@@ -19,7 +19,8 @@ class Storage {
         return $this->stocks[$drink_type->valueOf()]->isEmpty();
     }
 
-    public function decrement(DrinkType $drink_type) {
+    public function takeOut(DrinkType $drink_type): Drink {
         $this->stocks[$drink_type->valueOf()]->decrement();
+        return new Drink($drink_type);
     }
 }

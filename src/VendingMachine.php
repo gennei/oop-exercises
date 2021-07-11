@@ -24,9 +24,8 @@ class VendingMachine {
             return null;
         }
         $this->coinmech->commit();
-        $this->storage->decrement($kindOfDrink);
 
-        return new Drink($kindOfDrink);
+        return $this->storage->takeOut($kindOfDrink);
     }
 
     /**
