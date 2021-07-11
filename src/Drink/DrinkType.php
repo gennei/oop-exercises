@@ -6,6 +6,7 @@ namespace App\Drink;
  * @method static COKE()
  * @method static DIET_COKE()
  * @method static TEA()
+ * @method static COFFEE()
  */
 class DrinkType {
 
@@ -15,6 +16,7 @@ class DrinkType {
         'COKE',
         'DIET_COKE',
         'TEA',
+        'COFFEE'
     ];
 }
 
@@ -45,7 +47,7 @@ trait EnumTrait {
     }
 
     final public function __set($key, $value) {
-        throw new \BadMethodCallException('All setter is forbbiden');
+        throw new \BadMethodCallException('All setter is forbidden');
     }
 
     final public function valueOf(): string {

@@ -14,6 +14,8 @@ class Storage {
                      ->valueOf() => new Stock(5),
             DrinkType::TEA()
                      ->valueOf() => new Stock(5),
+            DrinkType::COFFEE()
+                     ->valueOf() => new Stock(2),
         ];
     }
 

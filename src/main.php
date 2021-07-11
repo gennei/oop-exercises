@@ -11,11 +11,11 @@ class main {
     public static function exec() {
         $vending_machine = new VendingMachine();
 
-        $drink  = $vending_machine->buy(new Coin(500), DrinkType::COKE());
+        $drink  = $vending_machine->buy(new Coin(500), DrinkType::COFFEE());
         $charge = $vending_machine->refund();
 
-        if ($drink != null && $drink->isCoke()) {
-            echo "コーラを購入しました。" . PHP_EOL;
+        if ($drink != null) {
+            echo $drink . "を購入しました。" . PHP_EOL;
             echo "おつりは{$charge}円です" . PHP_EOL;
         } else {
             throw new Exception("コーラは買えなかった。ぴえん");

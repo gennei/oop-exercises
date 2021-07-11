@@ -21,4 +21,12 @@ class Drink {
     public function isTea(): bool {
         return $this->kind == DrinkType::TEA();
     }
+
+    public function isCoffee(): bool {
+        return $this->kind == DrinkType::COFFEE();
+    }
+
+    public function __toString() {
+        return $this->kind->valueOf();
+    }
 }
