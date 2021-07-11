@@ -7,7 +7,6 @@ require_once("./Stock.php");
 require_once("./Change.php");
 require_once("./Coin.php");
 require_once("./VendingMachine.php");
-require_once("./Money.php");
 require_once("./CashBox.php");
 require_once("./CoinMech.php");
 require_once("./Payment.php");

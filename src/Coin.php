@@ -14,8 +14,4 @@ class Coin {
     public function get(): int {
         return $this->amount;
     }
-
-    public function toMoney(): Money {
-        return new Money($this->amount);
-    }
 }

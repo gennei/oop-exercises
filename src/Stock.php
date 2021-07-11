@@ -8,10 +8,6 @@ class Stock {
         $this->quantity = $quantity;
     }
 
-    public function get(): int {
-        return $this->quantity;
-    }
-
     public function decrement() {
         $this->quantity -= 1;
     }

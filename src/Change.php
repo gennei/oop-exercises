@@ -17,8 +17,4 @@ class Change {
 
         return $sum;
     }
-
-    public function clear() {
-        $this->coins = [];
-    }
 }

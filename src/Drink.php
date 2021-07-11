@@ -8,10 +8,6 @@ class Drink {
         $this->kind = $kind;
     }
 
-    public function getKind(): DrinkType {
-        return $this->kind;
-    }
-
     public function isCoke(): bool {
         return $this->kind == DrinkType::COKE();
     }
