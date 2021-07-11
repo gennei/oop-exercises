@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Drink;
+
 class Stock {
 
     private $quantity;

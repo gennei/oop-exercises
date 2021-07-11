@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Money;
+
 class Payment {
 
     private $coin;

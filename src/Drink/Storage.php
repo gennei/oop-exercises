@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Drink;
+
 class Storage {
 
     private $stocks;
@@ -21,6 +23,7 @@ class Storage {
 
     public function takeOut(DrinkType $drink_type): Drink {
         $this->stocks[$drink_type->valueOf()]->decrement();
+
         return new Drink($drink_type);
     }
 }

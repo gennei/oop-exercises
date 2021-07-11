@@ -1,5 +1,13 @@
 <?php
 
+namespace App;
+
+use App\Drink\Drink;
+use App\Drink\DrinkType;
+use App\Drink\Storage;
+use App\Money\Coin;
+use App\Money\CoinMech;
+
 class VendingMachine {
 
     // 在庫

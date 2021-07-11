@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Drink;
+
 class Drink {
 
     private $kind;

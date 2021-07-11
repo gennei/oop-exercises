@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Money;
+
 class CashBox {
 
     private $coins = [];

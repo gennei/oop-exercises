@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Money;
+
 class Coin {
 
     const ONE_HUNDRED  = 100;

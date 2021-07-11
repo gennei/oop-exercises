@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Drink;
+
 /**
  * @method static COKE()
  * @method static DIET_COKE()

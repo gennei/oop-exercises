@@ -1,15 +1,10 @@
 <?php
 
-require_once("./Drink.php");
-require_once("./DrinkType.php");
-require_once("./Storage.php");
-require_once("./Stock.php");
-require_once("./Change.php");
-require_once("./Coin.php");
-require_once("./VendingMachine.php");
-require_once("./CashBox.php");
-require_once("./CoinMech.php");
-require_once("./Payment.php");
+use App\Drink\DrinkType;
+use App\Money\Coin;
+use App\VendingMachine;
+
+require_once(__DIR__ . "/../vendor/autoload.php");
 
 class main {
 
